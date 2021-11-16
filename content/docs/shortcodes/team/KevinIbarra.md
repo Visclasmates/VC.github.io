@@ -1,5 +1,6 @@
 # Kevin Ibarra
 
-IN PROGRESS...
+New attempt
 
-{{< p5-iframe sketch="/VC.GITHUB.IO/content/docs/shortcodes/team/js/analogLenticularAnimation.js" width="500" height="500" >}}
+{{< p5-iframe sketch="../js/analogLenticularAnimation.js" width="500" height="500" >}}
+{{< figure src="/VC.GITHUB.IO/images/ballRotate.jpg" width="500">}}

@@ -6,7 +6,7 @@ let img_scale = 0.15,
     grpx = 0;
 
 function preload() {
-    img = loadImage('/VC.GITHUB.IO/content/docs/shortcodes/team/images/ballRotate.jpg');
+    img = loadImage('../images/ballRotate.jpg');
 }
 
 function setup() {
@@ -14,7 +14,7 @@ function setup() {
     imageMode(CENTER);
     textAlign(CENTER, CENTER);
 
-    grp = createGraphics(500, 500);
+    grp = createGraphics(1000, 500);
     drawLen();
     grpx = width / 2;
 }
