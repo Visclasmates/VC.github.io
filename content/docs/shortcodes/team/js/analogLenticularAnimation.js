@@ -6,7 +6,7 @@ let img_scale = 0.15,
     grpx = 0;
 
 function preload() {
-    img = loadImage('/VC.GITHUB.IO/docs/shortcodes/team/images/ballRotate.jpg');
+    img = loadImage('/VC.GITHUB.IO/content/docs/shortcodes/team/images/ballRotate.jpg');
 }
 
 function setup() {
