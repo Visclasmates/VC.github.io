@@ -1,7 +1,7 @@
 let sebas;
 var angle = 0;
 function preload(){
-  sebas = loadImage('sun.jpg');
+  sebas = loadImage('../images/sun.jpg');
 }
 function setup() {
   //createCanvas(400, 400);

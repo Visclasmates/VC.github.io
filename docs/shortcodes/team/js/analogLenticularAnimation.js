@@ -6,7 +6,7 @@ let img_scale = 0.15,
     grpx = 0;
 
 function preload() {
-    img = loadImage('../images/ballRotate.jpg');
+    img = loadImage('../images/ballRotate2.jpg');
 }
 
 function setup() {
@@ -14,7 +14,7 @@ function setup() {
     imageMode(CENTER);
     textAlign(CENTER, CENTER);
 
-    grp = createGraphics(1000, 500);
+    grp = createGraphics(600, 600);
     drawLen();
     grpx = width / 2;
 }
