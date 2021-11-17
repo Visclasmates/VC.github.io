@@ -9,9 +9,8 @@ function setup() {
 function draw() {
   var x=map(cos(angle),-1,1,0,width);
   var y=map(sin(angle),-1,1,0,width);
+  stroke(random(255),random(255),random(255));
   line(200,200,x,y)
-  if(angle < 12.55){
-    angle +=0.01  
-  }
-  
+  angle +=0.01  
+ 
 }
