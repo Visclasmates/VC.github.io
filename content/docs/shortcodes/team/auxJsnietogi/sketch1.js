@@ -1,16 +1,22 @@
-let cs = 20;
+let sebas;
 var angle = 0;
-
-function setup() {
-  createCanvas(400, 400);
-  background(220);
+function preload(){
+  sebas = loadImage('sun.jpg');
 }
-
+function setup() {
+  //createCanvas(400, 400);
+  background(sebas);
+}
 function draw() {
+  
+  //background(sebas);
+  
   var x=map(cos(angle),-1,1,0,width);
   var y=map(sin(angle),-1,1,0,width);
-  stroke(random(255),random(255),random(255));
+  stroke(0,255,0);
   line(200,200,x,y)
-  angle +=0.01  
- 
+  if(angle < 12.55){
+    angle +=0.01  
+  }
+  
 }
