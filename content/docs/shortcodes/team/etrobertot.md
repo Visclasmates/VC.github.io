@@ -15,5 +15,11 @@ Las ilusiones pueden basarse en la capacidad de un individuo para ver en tres di
 
 Al igual que la percepción de profundidad, la percepción del movimiento es responsable de una serie de ilusiones sensoriales. La animación cinematográfica se basa en la ilusión de que el cerebro percibe una serie de imágenes ligeramente variadas producidas en rápida sucesión como una imagen en movimiento. Del mismo modo, cuando nos estamos moviendo, como lo estaríamos mientras viajamos en un vehículo, puede parecer que los objetos circundantes estables se mueven. También podemos percibir que un objeto grande, como un avión, se mueve más lentamente que los objetos más pequeños, como un automóvil, aunque el objeto más grande realmente se está moviendo más rápido. [1]
 
+{{< p5-iframe sketch="../js/sketche1.js" width="425" height="375" >}}
+
+Existen otras formas de generar la ilusión de movimiento y profundidad en una imagen, para el sifuiente ejemplo la ilusión se genera a partir de un redimencionamiento de la imagen tipo fractal, al igual que en el caso anterior se tiene la percepción de mayor velocidad hacia los bordes, pero son los puntos centrales quienes cambian de forma mas rapida:
+
+{{< p5-iframe sketch="../js/sketche2.js" width="620" height="625" >}}
+
 ### Bibliografia
 [1] Ilusión Optica. https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento
