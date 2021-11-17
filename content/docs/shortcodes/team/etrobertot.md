@@ -23,3 +23,5 @@ Existen otras formas de generar la ilusión de movimiento y profundidad en una i
 
 ### Bibliografia
 [1] Ilusión Optica. https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento
+[2] Ilusion Optica 1. https://editor.p5js.org/lo.bertrand/sketches/OyU7wEGOr
+[3] Ilusión Optica 2. https://editor.p5js.org/AdityaRavi/sketches/dfw7Ymwut
