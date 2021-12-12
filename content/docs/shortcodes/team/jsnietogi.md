@@ -1,7 +1,7 @@
 # Juan Sebastian Nieto Giraldo
 
 
-{{< p5-iframe sketch="../js/sketch1.js" width="150" height="150" >}}
+{{< p5-iframe sketch="../js/sketch1.js" width="600" height="600" >}}
 
 Soy juan Sebastian Nieto Giraldo tengo 27, estoy cursando 7 matricula, casi termino una carrera en otra universidad pero mi talento estaba en otras areas de la vida trabajo como gerente de una empresa de metalmecanica.
 amo los videojuegos 
