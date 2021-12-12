@@ -14,7 +14,6 @@ let fs=
 "float get1(vec2 q, vec2 p1, vec2 p2){" +
 "  return (p2.y-p1.y)*(q.x-p2.x)-(p2.x-p1.x)*(q.y-p2.y);" +
 "}" +
-// 線の上にあるかどうか
 "bool check1(vec2 q1, vec2 q2, vec2 q3, vec2 q4, vec2 p1, vec2 p2){" +
 "  float d1 = get1(q1, p1, p2);" +
 "  float d2 = get1(q2, p1, p2);" +
@@ -24,7 +23,6 @@ let fs=
 "  if(max(max(d1, d2), max(d3, d4)) <= 0.0){ return false; }" +
 "  return true;" +
 "}" +
-// ピクセルの上下左右でチェック
 "bool check2(vec2 q1, vec2 q2, vec2 q3, vec2 q4, vec2 p1, vec2 p2){" +
 "  if(min(min(q1.x, q2.x), min(q3.x, q4.x)) > max(p1.x, p2.x)){ return false; }" +
 "  if(max(max(q1.x, q2.x), max(q3.x, q4.x)) < min(p1.x, p2.x)){ return false; }" +
@@ -32,7 +30,6 @@ let fs=
 "  if(max(max(q1.y, q2.y), max(q3.y, q4.y)) < min(p1.y, p2.y)){ return false; }" +
 "  return true;" +
 "}" +
-// 三角形チェック用の関数
 "bool check3(vec2 v1, vec2 v2, vec2 v3, vec2 v4, vec2 u){" +
 "  float d1 = u.x * v1.y - u.y * v1.x;" +
 "  float d2 = u.x * v2.y - u.y * v2.x;" +
@@ -41,14 +38,10 @@ let fs=
 "  if(min(min(d1, d2), min(d3, d4)) > 0.0){ return true; }" +
 "  return false;" +
 "}" +
-// strokeColor.
 "vec3 getStrokeColor(vec2 q1, vec2 q2, vec2 q3, vec2 q4, vec2 p1, vec2 p2){" +
 "  if(check1(q1, q2, q3, q4, p1, p2) && check2(q1, q2, q3, q4, p1, p2)){ return vec3(1.0, 0.8, 0.4); }" +
 "  return vec3(1.0);" +
 "}" +
-// fillColor. p1, p2, p3はこの順で時計回りとする・・
-// とりあえずカリングは無視で。
-// p2-p1のベクトルとq1-p1のベクトルで外積取って正みたいな。
 "vec3 getFillColor(vec2 q1, vec2 q2, vec2 q3, vec2 q4, vec2 p1, vec2 p2, vec2 p3){" +
 "  vec2 u1 = p2 - p1;" +
 "  vec2 u2 = p3 - p2;" +
@@ -89,7 +82,7 @@ function setup() {
   noStroke();
   
   gr = createGraphics(640, 640);
-  gr.strokeWeight(2);
+  gr.strokeWeight(1);
   
   gl.enable(gl.DEPTH_TEST);
 }
