@@ -167,14 +167,14 @@ Rasterización de una recta:
 Rasterización de un triangulo:
 {{< p5-iframe sketch="../js/sketch4.js" width="640" height="640" >}} [5]
 
-[Ejemplo de Visibilidad en Processing](https://openprocessing.org/sketch/649334)[6]
+[Ejemplo de Visibilidad en Processing](https://openprocessing.org/sketch/649334) [6]
  
 # Bibliografía 
 
-* [1.Ray Tracing. Wikipedia](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)).
-* [2.Ray Tracing ¿Qué es y para qué sirve esta tecnología de Nvidia?](https://www.profesionalreview.com/guias/ray-tracing-que-es-y-para-que-sirve/).
-* [3.Photon Mapping.Wikipedia](https://en.wikipedia.org/wiki/Photon_mapping).
-* [4.Photon Mapping. A Practical Guide to Global Illumination Using Photo Mapping](https://www.fing.edu.uy/inco/cursos/cga/Clases/2018/Photon_mapping.pdf).
-* [5.Ejemplo Raterización](https://openprocessing.org/sketch/1368007).
-* [6.Ejemplo de Visibilidad en Processing](https://openprocessing.org/sketch/649334).
+* [[1] Ray Tracing. Wikipedia](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)).
+* [[2]Ray Tracing ¿Qué es y para qué sirve esta tecnología de Nvidia?](https://www.profesionalreview.com/guias/ray-tracing-que-es-y-para-que-sirve/).
+* [[3]Photon Mapping.Wikipedia](https://en.wikipedia.org/wiki/Photon_mapping).
+* [[4]Photon Mapping. A Practical Guide to Global Illumination Using Photo Mapping](https://www.fing.edu.uy/inco/cursos/cga/Clases/2018/Photon_mapping.pdf).
+* [[5]Ejemplo Raterización](https://openprocessing.org/sketch/1368007).
+* [[6]Ejemplo de Visibilidad en Processing](https://openprocessing.org/sketch/649334).
 
