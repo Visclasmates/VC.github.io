@@ -6,8 +6,7 @@ El Ray Tracing es un algoritmo para síntesis de imágenes que calcula el camino
 
 En el algoritmo de emisión de rayos se determinan las superficies visibles en la escena que se quiere sintetizar trazando rayos desde el observador (cámara) hasta la escena a través del plano de la imagen. Se calculan las intersecciones del rayo con los diferentes objetos de la escena y aquella intersección que esté más cerca del observador determina cuál es el objeto visible.
 
-#imagen1
-{{< figure src="../images/images1.png" width="500">}}
+{{< figure src="../images/imagen1.png" width="500">}}
 
 El algoritmo de trazado de rayos extiende la idea de trazar los rayos para determinar las superficies visibles con un proceso de sombreado (cálculo de la intensidad del píxel) que tiene en cuenta efectos globales de iluminación como pueden ser reflexiones, refracciones o sombras arrojadas.
 
@@ -21,8 +20,7 @@ Esta no es una tecnología nueva, sino que se conoció por primera vez en 1979, 
 
 ¿Por qué no se usa el Ray Tracing en tiempo real en juegos? Porque el renderizado de una sola fotografía haciendo uso de Ray Tracing podría tardar minutos u horas; en cambio, para una película se usan gigantescas granjas de renderizado que probablemente cuesten millones y tarden horas o días en completar uno de estos procesos. Al menos hasta ahora, no era asumible hacer uso de ella en videojuegos.
 
-#imagen2
-{{< figure src="../images/images2.png" width="500">}}
+{{< figure src="../images/imagen2.png" width="500">}}
 
 ## Photon Mapping
 
@@ -66,8 +64,7 @@ Si sólo unas pocas fuentes de luz son importantes, entonces se puede utilizar u
 
 En escenas con geometría dispersa, muchos fotones no acertarán a ningún objeto.
 
-#imagen3
-{{< figure src="../images/images3.png" width="500">}}
+{{< figure src="../images/imagen3.png" width="500">}}
 
 Mapa de proyección es un mapa de la geometría tal como es vista desde la fuente de luz (ej. una proyección esférica centrada en una luz puntual, o una proyección plana en una luz direccional). El mapa contiene muchas celdas. Una celda está “on” cuando tiene una geometría proyectada en ella. Para acelerar la velocidad de la creación del mapa de proyección, se puede proyectar sobre este la esfera acotante de cada objeto o de un cluster de objetos. Conviene que haya un mapa de proyección para las superficies especulares (que generan cáusticas).
 
@@ -78,42 +75,37 @@ Estrategias para emitir los fotones:
 
 Hay que escalar la energía de los fotones basado en el número de celdas activas y el número de fotones emitidos.
 
-#Ecuacion1
 {{< figure src="../images/ecuacion1.png" width="500">}}
 
 Donde P_ligth corresponde a las celdas con objetos y n_e al número total de celdas.
 
 # Trazado de fotones
 
-#Imagen4
-{{< figure src="../images/images4.png" width="500">}}
+{{< figure src="../images/imagen4.png" width="500">}}
 
 En photon tracing los fotones propagan el flujo de energía que transporta. Existen 3 tipos de interacción del fotón con la superficie: reflexión, transmisión, absorción Si una superficie reflectiva tiene coeficientes de reflexión difusa d y de reflexión especular s (con s+d <=1), se toma un valor aleatorio a  [0,1], y según qué valor tenga se decide qué interacción tendrá el fotón (ruleta rusa):
 
-#imagen5
-{{< figure src="../images/images5.png" width="500">}}
+{{< figure src="../images/imagen5.png" width="500">}}
 
 Hay que destacar que el fotón reflejado no pierde potencia, por ejemplo, di una superficie refleja el 50% de la luz incidente, solo la mitad de los fotones se reflejará, pero con toda la energía (este método se llama ruleta rusa). Otra solución podría ser reflejar todos los fotones, pero con la mitad de la potencia. Se considera más optima la implementación de la primera opción, por reducir los requerimientos de cómputo.
 
 Si los fotones y las superficies son coloreadas (por ej. con colores RGB), se calcula Pd y Ps :
 
-#Ecuación2
 {{< figure src="../images/ecuacion2.png" width="500">}}
 
 (d_r,d_g,d_b) son coeficientes de reflexión difusa para cada color.
 ⁡(P_r,P_g,P_b) indican la potencia del fotón en cada color.
 
-#Ecuación3
+
 {{< figure src="../images/ecuacion3.png" width="500">}}
 
 ⁡(s_r,s_g,s_b) son los coeficientes de reflexión especular.
 
-#imagen6
-{{< figure src="../images/images6.png" width="500">}}
+
+{{< figure src="../images/imagen6.png" width="500">}}
 
 El color del fotón reflejado debe variar, si por ejemplo se eligió una reflexión especular, la potencia del fotón incidente p_inc es reflejada como p_refle que se calcula así:
 
-#Ecuación4
 {{< figure src="../images/ecuacion4.png" width="500">}}
 
 Lo mismo se puede establecer para la reflexión difusa.
@@ -125,7 +117,6 @@ Problema con ruleta rusa incrementa la varianza de la solución. Se precisa sufi
 
 Se almacenan solamente los aciertos en superficies difusas. La probabilidad de captar un fotón reflejado especularmente es 0. Si queremos renderizar reflexiones especulares detalladas, la mejor forma es realizar una traza de rayos del ojo hacia el espejo utilizando Ray Tracing estándar.
 
-#Figure2_4
 {{< figure src="../images/Figure2_4.png" width="500">}}
 
 Para el resto, los datos se almacenan en una estructura única, llamada photon map o mapa de fotones. Cada fotón es almacenado varias veces a lo largo de su camino. También se almacena información acerca de un fotón en la superficie donde se absorbió, si esta es difusa.
@@ -133,38 +124,34 @@ Para el resto, los datos se almacenan en una estructura única, llamada photon m
 Aplicaciones.
 Ejemplo 1. Caja de Cornell generada con ray tracing y con sombras duras, generada en 3.5 s.
 
-#Figure2_16
 {{< figure src="../images/Figure2_16.png" width="500">}}
 
 Ejemplo 2. Caja de Cornell generada con ray tracing y con sombras suaves, generada en 3.5 s.
 
-#Figure2_17
 {{< figure src="../images/Figure2_17.png" width="500">}}
 
 Ejemplo 3. Caja de Cornell generada con ray tracing y con photon mapping para las cáusticas. Mapa de fotones de cáusticas tiene unos 50.000 fotones. La estimación utiliza unos 60 fotones. La generación de los fotones demoró 2 segundos. El rendering demoró 42 segundos.
 
-#Figure2_18
 {{< figure src="../images/Figure2_18.png" width="500">}}
 
 Ejemplo 4. Iluminación global. La escena está mucho más iluminada. 200.000 fotones para mapa de fotones global y 100 fotones en el estimado. Generar los fotones costó 4 seg. El rendering demoró 66 seg.
 
-#Figure2_19
 {{< figure src="../images/Figure2_19.png" width="500">}}
-#Figure2_20
+
 {{< figure src="../images/Figure2_20.png" width="500">}}
-#Figure2_21
+
 {{< figure src="../images/Figure2_21.png" width="500">}}
-#Figure2_22
+
 {{< figure src="../images/Figure2_22.png" width="500">}}
 
 Se utilizan 200.000 fotones en el mapa de fotones global y 50.000 fotones para el mapa de fotones de cáustica (idem que para el caso sencillo). El fractal tiene 1,6 millones de elementos. Tiempo de rendering fue de 14 minutos.
 
-#Figure2_24
+
 {{< figure src="../images/Figure2_24.png" width="500">}}
 
 Se utilizan 100.000 fotones en el mapa de fotones global y 200.000 fotones para el mapa de fotones de volumen. Tiempo de rendering fue de 44 minutos.
 
-#Figure2_26
+
 {{< figure src="../images/Figure2_26.png" width="500">}}
 
 # rasterizacion
