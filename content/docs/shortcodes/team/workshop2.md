@@ -22,9 +22,9 @@ Esta no es una tecnología nueva, sino que se conoció por primera vez en 1979, 
 
 {{< figure src="../images/imagen2.png" width="500">}}
 
-## Photon Mapping
+# Photon Mapping
 
-# Contextualización Histórica 
+## Contextualización Histórica 
 
 El concepto Photon mapping, fue introducido por Henrik Wann Jensen en junio de 1996. A raíz de la necesidad de un algoritmo que fuera capaz de renderizar imágenes de geometría compleja con iluminación global. 
 
@@ -34,7 +34,7 @@ Para la solución a dicho problema se plantearon alternativas como  técnicas mu
 
 Dicho ruido en la técnica Ray Tracing se representa en la incapacidad de la técnica de representar aspectos como cáusticas, interreflexiones difusas, y medios participativos (niebla) en dichas escenas complejas. Otra ventaja sobre esta técnica es que Photon Mapping permite optimizar el tiempo de ejecución del proceso usando solo una fracción del tiempo de cómputo.
 
-# ¿Qué es Photon Mapping?
+## ¿Qué es Photon Mapping?
 
 Es un método de “dos pasadas” o etapas:
 
@@ -42,25 +42,25 @@ Es un método de “dos pasadas” o etapas:
 
 * Radiación estimada (Radiance Estimate). La segunda pasada utiliza técnicas estadísticas sobre el mapa de fotones para extraer información acerca del flujo incidente y la radiancia reflejada en cualquier punto de la escena.
 
-# Ventajas de photon mapping
+## Ventajas de photon mapping
 
 Comparado con Radiosidad. No es necesaria la generación de mallas; el método de Radiosidad es más rápido para escenas simples, pero a medida que la complejidad aumenta, photon mapping tiende a ser mejor. A su vez, Radiosidad está limitado a superficies difusas.
 
 Comparado con métodos de Monte Carlo (path tracing, bidirectional-path tracing, Metrópolis) Photon mapping requiere mucha más memoria para almacenar los fotones. Photon mapping es más rápido y con resultados mejores dado que el error es de baja frecuencia, por tanto se nota menos que el ruido de alta frecuencia que en general poseen los métodos de Monte Carlo.
 
-# Emisión de fotones desde una fuente
+## Emisión de fotones desde una fuente
 
 Fotones emitidos desde un punto emisor de luz difusa, se distribuye uniformemente en direcciones aleatorias. Si se emite desde una fuente de luz direccional, los fotones van en la misma dirección, (con el origen fuera de la escena). Si la fuente de luz es un cuadrado emisor difuso, los fotones salen de posiciones aleatorias del cuadrado, con direcciones limitadas a una semiesfera. La dirección de emisión sigue una distribución coseno.
 
 Puede manejar luces con cualquier forma y características de emisión. La probabilidad de emisión puede variar según el punto de emisión y la dirección.
 
-# Emisión de fotones desde múltiples fuentes
+## Emisión de fotones desde múltiples fuentes
 
 La luz más fuerte emite más fotones (conviene que todos los fotones tengan potencia parecida). Más fuentes de luz no significa más fotones (cada luz contribuye menos a la iluminación total, y por tanto hay menos fotones por fuente de luz).
 
 Si sólo unas pocas fuentes de luz son importantes, entonces se puede utilizar un “importance sampling map”, que concentra los fotones en las áreas que son de interés para el observador.
 
-# Mapas de proyección
+## Mapas de proyección
 
 En escenas con geometría dispersa, muchos fotones no acertarán a ningún objeto.
 
@@ -69,9 +69,9 @@ En escenas con geometría dispersa, muchos fotones no acertarán a ningún objet
 Mapa de proyección es un mapa de la geometría tal como es vista desde la fuente de luz (ej. una proyección esférica centrada en una luz puntual, o una proyección plana en una luz direccional). El mapa contiene muchas celdas. Una celda está “on” cuando tiene una geometría proyectada en ella. Para acelerar la velocidad de la creación del mapa de proyección, se puede proyectar sobre este la esfera acotante de cada objeto o de un cluster de objetos. Conviene que haya un mapa de proyección para las superficies especulares (que generan cáusticas).
 
 Estrategias para emitir los fotones:
-– Loop recorriendo las celdas que contienen objetos y emitir fotones en direcciones que apunten a la celda. Problema potencial: se puede llenar el mapa de fotones antes de recorrer todas las celdas.
-– Generar direcciones aleatorias y chequear si la celda correspondiente tiene algún objeto. Problema potencial: costoso en escenas dispersas.
-– Para escenas dispersas: Elegir al azar una celda con objetos y luego una dirección al azar que apunte a la celda.
+* Loop recorriendo las celdas que contienen objetos y emitir fotones en direcciones que apunten a la celda. Problema potencial: se puede llenar el mapa de fotones antes de recorrer todas las celdas.
+* Generar direcciones aleatorias y chequear si la celda correspondiente tiene algún objeto. Problema potencial: costoso en escenas dispersas.
+* Para escenas dispersas: Elegir al azar una celda con objetos y luego una dirección al azar que apunte a la celda.
 
 Hay que escalar la energía de los fotones basado en el número de celdas activas y el número de fotones emitidos.
 
@@ -79,7 +79,7 @@ Hay que escalar la energía de los fotones basado en el número de celdas activa
 
 Donde P_ligth corresponde a las celdas con objetos y n_e al número total de celdas.
 
-# Trazado de fotones
+## Trazado de fotones
 
 {{< figure src="../images/imagen4.png" width="500">}}
 
@@ -87,7 +87,7 @@ En photon tracing los fotones propagan el flujo de energía que transporta. Exis
 
 {{< figure src="../images/imagen5.png" width="500">}}
 
-Hay que destacar que el fotón reflejado no pierde potencia, por ejemplo, di una superficie refleja el 50% de la luz incidente, solo la mitad de los fotones se reflejará, pero con toda la energía (este método se llama ruleta rusa). Otra solución podría ser reflejar todos los fotones, pero con la mitad de la potencia. Se considera más optima la implementación de la primera opción, por reducir los requerimientos de cómputo.
+Hay que destacar que el fotón reflejado no pierde potencia, por ejemplo, si una superficie refleja el 50% de la luz incidente, solo la mitad de los fotones se reflejará, pero con toda la energía (este método se llama ruleta rusa). Otra solución podría ser reflejar todos los fotones, pero con la mitad de la potencia. Se considera más optima la implementación de la primera opción, por reducir los requerimientos de cómputo.
 
 Si los fotones y las superficies son coloreadas (por ej. con colores RGB), se calcula Pd y Ps :
 
@@ -113,7 +113,7 @@ Lo mismo se puede establecer para la reflexión difusa.
 ¿Por qué tomarse el trabajo de elegir?, Si se generan 2 fotones por superficie reflejada, luego de 8 interacciones tengo 256 fotones, en lugar de 1 único fotón (precisa mucha más memoria)
 Problema con ruleta rusa incrementa la varianza de la solución. Se precisa suficiente cantidad de fotones para transmitir la reflexión verdadera de las superficies.
 
-# Almacenamiento de Fotones
+## Almacenamiento de Fotones
 
 Se almacenan solamente los aciertos en superficies difusas. La probabilidad de captar un fotón reflejado especularmente es 0. Si queremos renderizar reflexiones especulares detalladas, la mejor forma es realizar una traza de rayos del ojo hacia el espejo utilizando Ray Tracing estándar.
 
@@ -154,9 +154,9 @@ Se utilizan 100.000 fotones en el mapa de fotones global y 200.000 fotones para 
 
 {{< figure src="../images/Figure2_26.png" width="500">}}
 
-# rasterizacion
-{{< p5-iframe sketch="../js/sketch5.js" width="640" height="640" >}}
-
 ## Punto 2
+
+# Rasterizacion
+{{< p5-iframe sketch="../js/sketch5.js" width="640" height="640" >}}
 
 {{< p5-iframe sketch="../js/sketch4.js" width="640" height="640" >}}
