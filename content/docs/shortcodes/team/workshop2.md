@@ -1,6 +1,6 @@
-## Punto 1
+# Punto 1
 
-# Ray Traicing
+## Ray Traicing
 
 El Ray Tracing es un algoritmo para síntesis de imágenes que calcula el camino de la luz como píxeles en un plano de la imagen y simula sus efectos sobre las superficies virtuales en las que incida. Esta técnica es capaz de producir imágenes con un alto grado de realismo, de una forma mayor que el renderizado mediante líneas de exploración tradicional, aunque el coste computacional del trazado de rayos es mucho mayor.
 
@@ -16,7 +16,7 @@ Para simular las sombras arrojadas se emiten rayos desde el punto de intersecci�
 
 Esta no es una tecnología nueva, sino que se conoció por primera vez en 1979, presentada por Turner Whitted. De hecho, está ampliamente usada en todo tipo de vídeos y fotografías renderizados en 3D. El algoritmo básico de trazado de rayos fue mejorado por Robert Cook (1985) para simular otros efectos en las imágenes mediante el muestreo estocástico usando un método de Montecarlo; entre estos efectos podemos citar el desenfoque de movimiento, la profundidad de campo o el submuestreo para suavizar los bordes de la imagen resultante.
 
-# Ray Tracing en tiempo real
+## Ray Tracing en tiempo real
 
 ¿Por qué no se usa el Ray Tracing en tiempo real en juegos? Porque el renderizado de una sola fotografía haciendo uso de Ray Tracing podría tardar minutos u horas; en cambio, para una película se usan gigantescas granjas de renderizado que probablemente cuesten millones y tarden horas o días en completar uno de estos procesos. Al menos hasta ahora, no era asumible hacer uso de ella en videojuegos.
 
@@ -154,11 +154,7 @@ Se utilizan 100.000 fotones en el mapa de fotones global y 200.000 fotones para 
 
 {{< figure src="../images/Figure2_26.png" width="500">}}
 
-## Ejemplo
-
-{{< pde-iframe sketch="../pde/sketch1.pde" width="640" height="640" >}}
-
-## Punto 2
+# Punto 2
 
 # Rasterizacion
 
