@@ -8,13 +8,13 @@
 <meta property="og:description" content="Punto 1 #  Ray Traicing #  El Ray Tracing es un algoritmo para síntesis de imágenes que calcula el camino de la luz como píxeles en un plano de la imagen y simula sus efectos sobre las superficies virtuales en las que incida. Esta técnica es capaz de producir imágenes con un alto grado de realismo, de una forma mayor que el renderizado mediante líneas de exploración tradicional, aunque el coste computacional del trazado de rayos es mucho mayor.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://visclasmates.github.io/VC.github.io/docs/shortcodes/team/workshop2/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-12T21:20:03-05:00">
+<meta property="article:modified_time" content="2021-12-12T22:05:19-05:00">
 <title>Workshop2 | Visual Computing</title>
 <link rel=manifest href=/VC.github.io/manifest.json>
 <link rel=icon href=/VC.github.io/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/VC.github.io/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/VC.github.io/flexsearch.min.js></script>
-<script defer src=/VC.github.io/en.search.min.e8a49491ca9b07778f69b1d30ac30190b3024daba835c88ceb4522447aee910a.js integrity="sha256-6KSUkcqbB3ePabHTCsMBkLMCTauoNciM60UiRHrukQo=" crossorigin=anonymous></script>
+<script defer src=/VC.github.io/en.search.min.f79fc5a142a433195d3a14011a44eccbddc2a56f26b5cf33280711476519d752.js integrity="sha256-95/FoUKkMxldOhQBGkTsy93CpW8mtc8zKAcRR2UZ11I=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -128,11 +128,9 @@ Blog
 </ul>
 </li>
 <li><a href=#ray-traicing>Ray Traicing</a></li>
-<li><a href=#ray-tracing-en-tiempo-real>Ray Tracing en tiempo real</a>
+<li><a href=#ray-tracing-en-tiempo-real>Ray Tracing en tiempo real</a></li>
+<li><a href=#photon-mapping>Photon Mapping</a>
 <ul>
-<li><a href=#photon-mapping>Photon Mapping</a></li>
-</ul>
-</li>
 <li><a href=#contextualización-histórica>Contextualización Histórica</a></li>
 <li><a href=#qué-es-photon-mapping>¿Qué es Photon Mapping?</a></li>
 <li><a href=#ventajas-de-photon-mapping>Ventajas de photon mapping</a></li>
@@ -141,11 +139,10 @@ Blog
 <li><a href=#mapas-de-proyección>Mapas de proyección</a></li>
 <li><a href=#trazado-de-fotones>Trazado de fotones</a></li>
 <li><a href=#almacenamiento-de-fotones>Almacenamiento de Fotones</a></li>
-<li><a href=#rasterizacion>rasterizacion</a>
-<ul>
 <li><a href=#punto-2>Punto 2</a></li>
 </ul>
 </li>
+<li><a href=#rasterizacion>Rasterizacion</a></li>
 </ul>
 </nav>
 </aside>
@@ -173,22 +170,22 @@ Ray Tracing en tiempo real
 <p>¿Por qué no se usa el Ray Tracing en tiempo real en juegos? Porque el renderizado de una sola fotografía haciendo uso de Ray Tracing podría tardar minutos u horas; en cambio, para una película se usan gigantescas granjas de renderizado que probablemente cuesten millones y tarden horas o días en completar uno de estos procesos. Al menos hasta ahora, no era asumible hacer uso de ella en videojuegos.</p>
 <figure><img src=../images/imagen2.png width=500>
 </figure>
-<h2 id=photon-mapping>
+<h1 id=photon-mapping>
 Photon Mapping
 <a class=anchor href=#photon-mapping>#</a>
-</h2>
-<h1 id=contextualización-histórica>
+</h1>
+<h2 id=contextualización-histórica>
 Contextualización Histórica
 <a class=anchor href=#contextualizaci%c3%b3n-hist%c3%b3rica>#</a>
-</h1>
+</h2>
 <p>El concepto Photon mapping, fue introducido por Henrik Wann Jensen en junio de 1996. A raíz de la necesidad de un algoritmo que fuera capaz de renderizar imágenes de geometría compleja con iluminación global.</p>
 <p>En aquella época, estaba de moda el cálculo de radiosidad basado en elementos finitos (irradiance maps). Este tipo de método tiene dificultades a la hora de representar reflexión de la luz en superficies opacas (problema denominado BRDF), además problemas de optimización cuando la geometría a simular es compleja.</p>
 <p>Para la solución a dicho problema se plantearon alternativas como técnicas multipaso, ilumination maps y las técnicas de ray traicing basadas en el método de Monte Carlo, estas ultimas consideradas como la mejor opción, las cual se reconsideraría debido al problema de ruido que presentan a consecuencia de la varianza en los resultados.</p>
 <p>Dicho ruido en la técnica Ray Tracing se representa en la incapacidad de la técnica de representar aspectos como cáusticas, interreflexiones difusas, y medios participativos (niebla) en dichas escenas complejas. Otra ventaja sobre esta técnica es que Photon Mapping permite optimizar el tiempo de ejecución del proceso usando solo una fracción del tiempo de cómputo.</p>
-<h1 id=qué-es-photon-mapping>
+<h2 id=qué-es-photon-mapping>
 ¿Qué es Photon Mapping?
 <a class=anchor href=#qu%c3%a9-es-photon-mapping>#</a>
-</h1>
+</h2>
 <p>Es un método de “dos pasadas” o etapas:</p>
 <ul>
 <li>
@@ -198,50 +195,52 @@ Contextualización Histórica
 <p>Radiación estimada (Radiance Estimate). La segunda pasada utiliza técnicas estadísticas sobre el mapa de fotones para extraer información acerca del flujo incidente y la radiancia reflejada en cualquier punto de la escena.</p>
 </li>
 </ul>
-<h1 id=ventajas-de-photon-mapping>
+<h2 id=ventajas-de-photon-mapping>
 Ventajas de photon mapping
 <a class=anchor href=#ventajas-de-photon-mapping>#</a>
-</h1>
+</h2>
 <p>Comparado con Radiosidad. No es necesaria la generación de mallas; el método de Radiosidad es más rápido para escenas simples, pero a medida que la complejidad aumenta, photon mapping tiende a ser mejor. A su vez, Radiosidad está limitado a superficies difusas.</p>
 <p>Comparado con métodos de Monte Carlo (path tracing, bidirectional-path tracing, Metrópolis) Photon mapping requiere mucha más memoria para almacenar los fotones. Photon mapping es más rápido y con resultados mejores dado que el error es de baja frecuencia, por tanto se nota menos que el ruido de alta frecuencia que en general poseen los métodos de Monte Carlo.</p>
-<h1 id=emisión-de-fotones-desde-una-fuente>
+<h2 id=emisión-de-fotones-desde-una-fuente>
 Emisión de fotones desde una fuente
 <a class=anchor href=#emisi%c3%b3n-de-fotones-desde-una-fuente>#</a>
-</h1>
+</h2>
 <p>Fotones emitidos desde un punto emisor de luz difusa, se distribuye uniformemente en direcciones aleatorias. Si se emite desde una fuente de luz direccional, los fotones van en la misma dirección, (con el origen fuera de la escena). Si la fuente de luz es un cuadrado emisor difuso, los fotones salen de posiciones aleatorias del cuadrado, con direcciones limitadas a una semiesfera. La dirección de emisión sigue una distribución coseno.</p>
 <p>Puede manejar luces con cualquier forma y características de emisión. La probabilidad de emisión puede variar según el punto de emisión y la dirección.</p>
-<h1 id=emisión-de-fotones-desde-múltiples-fuentes>
+<h2 id=emisión-de-fotones-desde-múltiples-fuentes>
 Emisión de fotones desde múltiples fuentes
 <a class=anchor href=#emisi%c3%b3n-de-fotones-desde-m%c3%baltiples-fuentes>#</a>
-</h1>
+</h2>
 <p>La luz más fuerte emite más fotones (conviene que todos los fotones tengan potencia parecida). Más fuentes de luz no significa más fotones (cada luz contribuye menos a la iluminación total, y por tanto hay menos fotones por fuente de luz).</p>
 <p>Si sólo unas pocas fuentes de luz son importantes, entonces se puede utilizar un “importance sampling map”, que concentra los fotones en las áreas que son de interés para el observador.</p>
-<h1 id=mapas-de-proyección>
+<h2 id=mapas-de-proyección>
 Mapas de proyección
 <a class=anchor href=#mapas-de-proyecci%c3%b3n>#</a>
-</h1>
+</h2>
 <p>En escenas con geometría dispersa, muchos fotones no acertarán a ningún objeto.</p>
 <figure><img src=../images/imagen3.png width=500>
 </figure>
 <p>Mapa de proyección es un mapa de la geometría tal como es vista desde la fuente de luz (ej. una proyección esférica centrada en una luz puntual, o una proyección plana en una luz direccional). El mapa contiene muchas celdas. Una celda está “on” cuando tiene una geometría proyectada en ella. Para acelerar la velocidad de la creación del mapa de proyección, se puede proyectar sobre este la esfera acotante de cada objeto o de un cluster de objetos. Conviene que haya un mapa de proyección para las superficies especulares (que generan cáusticas).</p>
-<p>Estrategias para emitir los fotones:
-– Loop recorriendo las celdas que contienen objetos y emitir fotones en direcciones que apunten a la celda. Problema potencial: se puede llenar el mapa de fotones antes de recorrer todas las celdas.
-– Generar direcciones aleatorias y chequear si la celda correspondiente tiene algún objeto. Problema potencial: costoso en escenas dispersas.
-– Para escenas dispersas: Elegir al azar una celda con objetos y luego una dirección al azar que apunte a la celda.</p>
+<p>Estrategias para emitir los fotones:</p>
+<ul>
+<li>Loop recorriendo las celdas que contienen objetos y emitir fotones en direcciones que apunten a la celda. Problema potencial: se puede llenar el mapa de fotones antes de recorrer todas las celdas.</li>
+<li>Generar direcciones aleatorias y chequear si la celda correspondiente tiene algún objeto. Problema potencial: costoso en escenas dispersas.</li>
+<li>Para escenas dispersas: Elegir al azar una celda con objetos y luego una dirección al azar que apunte a la celda.</li>
+</ul>
 <p>Hay que escalar la energía de los fotones basado en el número de celdas activas y el número de fotones emitidos.</p>
 <figure><img src=../images/ecuacion1.png width=500>
 </figure>
 <p>Donde P_ligth corresponde a las celdas con objetos y n_e al número total de celdas.</p>
-<h1 id=trazado-de-fotones>
+<h2 id=trazado-de-fotones>
 Trazado de fotones
 <a class=anchor href=#trazado-de-fotones>#</a>
-</h1>
+</h2>
 <figure><img src=../images/imagen4.png width=500>
 </figure>
 <p>En photon tracing los fotones propagan el flujo de energía que transporta. Existen 3 tipos de interacción del fotón con la superficie: reflexión, transmisión, absorción Si una superficie reflectiva tiene coeficientes de reflexión difusa d y de reflexión especular s (con s+d &lt;=1), se toma un valor aleatorio a  [0,1], y según qué valor tenga se decide qué interacción tendrá el fotón (ruleta rusa):</p>
 <figure><img src=../images/imagen5.png width=500>
 </figure>
-<p>Hay que destacar que el fotón reflejado no pierde potencia, por ejemplo, di una superficie refleja el 50% de la luz incidente, solo la mitad de los fotones se reflejará, pero con toda la energía (este método se llama ruleta rusa). Otra solución podría ser reflejar todos los fotones, pero con la mitad de la potencia. Se considera más optima la implementación de la primera opción, por reducir los requerimientos de cómputo.</p>
+<p>Hay que destacar que el fotón reflejado no pierde potencia, por ejemplo, si una superficie refleja el 50% de la luz incidente, solo la mitad de los fotones se reflejará, pero con toda la energía (este método se llama ruleta rusa). Otra solución podría ser reflejar todos los fotones, pero con la mitad de la potencia. Se considera más optima la implementación de la primera opción, por reducir los requerimientos de cómputo.</p>
 <p>Si los fotones y las superficies son coloreadas (por ej. con colores RGB), se calcula Pd y Ps :</p>
 <figure><img src=../images/ecuacion2.png width=500>
 </figure>
@@ -259,10 +258,10 @@ Trazado de fotones
 ¿Por qué ruleta rusa?, Es preferible tener fotones de potencia similar. La estimación de radiancia es mucho mejor si se utilizan unos pocos fotones.
 ¿Por qué tomarse el trabajo de elegir?, Si se generan 2 fotones por superficie reflejada, luego de 8 interacciones tengo 256 fotones, en lugar de 1 único fotón (precisa mucha más memoria)
 Problema con ruleta rusa incrementa la varianza de la solución. Se precisa suficiente cantidad de fotones para transmitir la reflexión verdadera de las superficies.</p>
-<h1 id=almacenamiento-de-fotones>
+<h2 id=almacenamiento-de-fotones>
 Almacenamiento de Fotones
 <a class=anchor href=#almacenamiento-de-fotones>#</a>
-</h1>
+</h2>
 <p>Se almacenan solamente los aciertos en superficies difusas. La probabilidad de captar un fotón reflejado especularmente es 0. Si queremos renderizar reflexiones especulares detalladas, la mejor forma es realizar una traza de rayos del ojo hacia el espejo utilizando Ray Tracing estándar.</p>
 <figure><img src=../images/Figure2_4.png width=500>
 </figure>
@@ -292,8 +291,12 @@ Ejemplo 1. Caja de Cornell generada con ray tracing y con sombras duras, generad
 <p>Se utilizan 100.000 fotones en el mapa de fotones global y 200.000 fotones para el mapa de fotones de volumen. Tiempo de rendering fue de 44 minutos.</p>
 <figure><img src=../images/Figure2_26.png width=500>
 </figure>
+<h2 id=punto-2>
+Punto 2
+<a class=anchor href=#punto-2>#</a>
+</h2>
 <h1 id=rasterizacion>
-rasterizacion
+Rasterizacion
 <a class=anchor href=#rasterizacion>#</a>
 </h1>
 <iframe id=sketch5 style=width:640px;height:640px srcdoc="
@@ -313,10 +316,6 @@ rasterizacion
           </body>
         </html>
       "></iframe>
-<h2 id=punto-2>
-Punto 2
-<a class=anchor href=#punto-2>#</a>
-</h2>
 <iframe id=sketch4 style=width:640px;height:640px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -337,7 +336,7 @@ Punto 2
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/visclasmates/VC.github.io/commit/d2d2a6b9425f699b1678ab19d29a58eac706100b title="Last modified by etrobertot | December 13, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/visclasmates/VC.github.io/commit/ea9f197b76951cdf9e938f0166edc44039390009 title="Last modified by etrobertot | December 13, 2021" target=_blank rel=noopener>
 <img src=/VC.github.io/svg/calendar.svg class=book-icon alt=Calendar>
 <span>December 13, 2021</span>
 </a>
@@ -359,11 +358,9 @@ Punto 2
 </ul>
 </li>
 <li><a href=#ray-traicing>Ray Traicing</a></li>
-<li><a href=#ray-tracing-en-tiempo-real>Ray Tracing en tiempo real</a>
+<li><a href=#ray-tracing-en-tiempo-real>Ray Tracing en tiempo real</a></li>
+<li><a href=#photon-mapping>Photon Mapping</a>
 <ul>
-<li><a href=#photon-mapping>Photon Mapping</a></li>
-</ul>
-</li>
 <li><a href=#contextualización-histórica>Contextualización Histórica</a></li>
 <li><a href=#qué-es-photon-mapping>¿Qué es Photon Mapping?</a></li>
 <li><a href=#ventajas-de-photon-mapping>Ventajas de photon mapping</a></li>
@@ -372,11 +369,10 @@ Punto 2
 <li><a href=#mapas-de-proyección>Mapas de proyección</a></li>
 <li><a href=#trazado-de-fotones>Trazado de fotones</a></li>
 <li><a href=#almacenamiento-de-fotones>Almacenamiento de Fotones</a></li>
-<li><a href=#rasterizacion>rasterizacion</a>
-<ul>
 <li><a href=#punto-2>Punto 2</a></li>
 </ul>
 </li>
+<li><a href=#rasterizacion>Rasterizacion</a></li>
 </ul>
 </nav>
 </div>
