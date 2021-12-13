@@ -154,9 +154,19 @@ Se utilizan 100.000 fotones en el mapa de fotones global y 200.000 fotones para 
 
 {{< figure src="../images/Figure2_26.png" width="500">}}
 
+## Ejemplo
+
+{{< pde-iframe sketch="../pde/sketch1.pde" width="640" height="640" >}}
+
 ## Punto 2
 
 # Rasterizacion
+
+Rasterización de una fotografia:
 {{< p5-iframe sketch="../js/sketch5.js" width="640" height="640" >}}
 
+Rasterización de una recta:
+{{< p5-iframe sketch="../js/sketch_line.js" width="640" height="640" >}}
+
+Rasterización de un triangulo:
 {{< p5-iframe sketch="../js/sketch4.js" width="640" height="640" >}}
