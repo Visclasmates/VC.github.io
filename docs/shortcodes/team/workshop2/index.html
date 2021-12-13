@@ -8,13 +8,13 @@
 <meta property="og:description" content="Punto 1 #  Ray Traicing #  El Ray Tracing es un algoritmo para síntesis de imágenes que calcula el camino de la luz como píxeles en un plano de la imagen y simula sus efectos sobre las superficies virtuales en las que incida. Esta técnica es capaz de producir imágenes con un alto grado de realismo, de una forma mayor que el renderizado mediante líneas de exploración tradicional, aunque el coste computacional del trazado de rayos es mucho mayor.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://visclasmates.github.io/VC.github.io/docs/shortcodes/team/workshop2/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-12-12T22:05:19-05:00">
+<meta property="article:modified_time" content="2021-12-12T23:15:55-05:00">
 <title>Workshop2 | Visual Computing</title>
 <link rel=manifest href=/VC.github.io/manifest.json>
 <link rel=icon href=/VC.github.io/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/VC.github.io/book.min.89a77f7e702a8626749b948bbfb01109823daf6c1246ca407d1378833494c402.css integrity="sha256-iad/fnAqhiZ0m5SLv7ARCYI9r2wSRspAfRN4gzSUxAI=" crossorigin=anonymous>
 <script defer src=/VC.github.io/flexsearch.min.js></script>
-<script defer src=/VC.github.io/en.search.min.f79fc5a142a433195d3a14011a44eccbddc2a56f26b5cf33280711476519d752.js integrity="sha256-95/FoUKkMxldOhQBGkTsy93CpW8mtc8zKAcRR2UZ11I=" crossorigin=anonymous></script>
+<script defer src=/VC.github.io/en.search.min.8474e66989d7b752b1ecbe21150f5cf40dc2f19ead134b493a852e83aa636d0a.js integrity="sha256-hHTmaYnXt1Kx7L4hFQ9c9A3C8Z6tE0tJOoUug6pjbQo=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -122,13 +122,12 @@ Blog
 <aside class="hidden clearfix">
 <nav id=TableOfContents>
 <ul>
-<li>
+<li><a href=#punto-1>Punto 1</a>
 <ul>
-<li><a href=#punto-1>Punto 1</a></li>
-</ul>
-</li>
 <li><a href=#ray-traicing>Ray Traicing</a></li>
 <li><a href=#ray-tracing-en-tiempo-real>Ray Tracing en tiempo real</a></li>
+</ul>
+</li>
 <li><a href=#photon-mapping>Photon Mapping</a>
 <ul>
 <li><a href=#contextualización-histórica>Contextualización Histórica</a></li>
@@ -139,22 +138,22 @@ Blog
 <li><a href=#mapas-de-proyección>Mapas de proyección</a></li>
 <li><a href=#trazado-de-fotones>Trazado de fotones</a></li>
 <li><a href=#almacenamiento-de-fotones>Almacenamiento de Fotones</a></li>
-<li><a href=#punto-2>Punto 2</a></li>
 </ul>
 </li>
+<li><a href=#punto-2>Punto 2</a></li>
 <li><a href=#rasterizacion>Rasterizacion</a></li>
 </ul>
 </nav>
 </aside>
 </header>
-<article class=markdown><h2 id=punto-1>
+<article class=markdown><h1 id=punto-1>
 Punto 1
 <a class=anchor href=#punto-1>#</a>
-</h2>
-<h1 id=ray-traicing>
+</h1>
+<h2 id=ray-traicing>
 Ray Traicing
 <a class=anchor href=#ray-traicing>#</a>
-</h1>
+</h2>
 <p>El Ray Tracing es un algoritmo para síntesis de imágenes que calcula el camino de la luz como píxeles en un plano de la imagen y simula sus efectos sobre las superficies virtuales en las que incida. Esta técnica es capaz de producir imágenes con un alto grado de realismo, de una forma mayor que el renderizado mediante líneas de exploración tradicional, aunque el coste computacional del trazado de rayos es mucho mayor.</p>
 <p>En el algoritmo de emisión de rayos se determinan las superficies visibles en la escena que se quiere sintetizar trazando rayos desde el observador (cámara) hasta la escena a través del plano de la imagen. Se calculan las intersecciones del rayo con los diferentes objetos de la escena y aquella intersección que esté más cerca del observador determina cuál es el objeto visible.</p>
 <figure><img src=../images/imagen1.png width=500>
@@ -163,10 +162,10 @@ Ray Traicing
 <p>Para simular los efectos de reflexión y refracción se trazan rayos recursivamente desde el punto de intersección que se está sombreando dependiendo de las características del material del objeto intersecado.</p>
 <p>Para simular las sombras arrojadas se emiten rayos desde el punto de intersección hasta las fuentes de luz. Estos rayos se conocen con el nombre de rayos de sombra.</p>
 <p>Esta no es una tecnología nueva, sino que se conoció por primera vez en 1979, presentada por Turner Whitted. De hecho, está ampliamente usada en todo tipo de vídeos y fotografías renderizados en 3D. El algoritmo básico de trazado de rayos fue mejorado por Robert Cook (1985) para simular otros efectos en las imágenes mediante el muestreo estocástico usando un método de Montecarlo; entre estos efectos podemos citar el desenfoque de movimiento, la profundidad de campo o el submuestreo para suavizar los bordes de la imagen resultante.</p>
-<h1 id=ray-tracing-en-tiempo-real>
+<h2 id=ray-tracing-en-tiempo-real>
 Ray Tracing en tiempo real
 <a class=anchor href=#ray-tracing-en-tiempo-real>#</a>
-</h1>
+</h2>
 <p>¿Por qué no se usa el Ray Tracing en tiempo real en juegos? Porque el renderizado de una sola fotografía haciendo uso de Ray Tracing podría tardar minutos u horas; en cambio, para una película se usan gigantescas granjas de renderizado que probablemente cuesten millones y tarden horas o días en completar uno de estos procesos. Al menos hasta ahora, no era asumible hacer uso de ella en videojuegos.</p>
 <figure><img src=../images/imagen2.png width=500>
 </figure>
@@ -291,14 +290,15 @@ Ejemplo 1. Caja de Cornell generada con ray tracing y con sombras duras, generad
 <p>Se utilizan 100.000 fotones en el mapa de fotones global y 200.000 fotones para el mapa de fotones de volumen. Tiempo de rendering fue de 44 minutos.</p>
 <figure><img src=../images/Figure2_26.png width=500>
 </figure>
-<h2 id=punto-2>
+<h1 id=punto-2>
 Punto 2
 <a class=anchor href=#punto-2>#</a>
-</h2>
+</h1>
 <h1 id=rasterizacion>
 Rasterizacion
 <a class=anchor href=#rasterizacion>#</a>
 </h1>
+<p>Rasterización de una fotografia:
 <iframe id=sketch5 style=width:640px;height:640px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -316,6 +316,27 @@ Rasterizacion
           </body>
         </html>
       "></iframe>
+</p>
+<p>Rasterización de una recta:
+<iframe id=sketch_line style=width:640px;height:640px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script src=../js/sketch_line.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+</p>
+<p>Rasterización de un triangulo:
 <iframe id=sketch4 style=width:640px;height:640px srcdoc="
         <!DOCTYPE html>
         <html>
@@ -333,10 +354,11 @@ Rasterizacion
           </body>
         </html>
       "></iframe>
+</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/visclasmates/VC.github.io/commit/ea9f197b76951cdf9e938f0166edc44039390009 title="Last modified by etrobertot | December 13, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/visclasmates/VC.github.io/commit/483e1bf4e6867b8b19c3f0fa43cbc3e888ea9de3 title="Last modified by etrobertot | December 13, 2021" target=_blank rel=noopener>
 <img src=/VC.github.io/svg/calendar.svg class=book-icon alt=Calendar>
 <span>December 13, 2021</span>
 </a>
@@ -352,13 +374,12 @@ Rasterizacion
 <div class=book-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li>
+<li><a href=#punto-1>Punto 1</a>
 <ul>
-<li><a href=#punto-1>Punto 1</a></li>
-</ul>
-</li>
 <li><a href=#ray-traicing>Ray Traicing</a></li>
 <li><a href=#ray-tracing-en-tiempo-real>Ray Tracing en tiempo real</a></li>
+</ul>
+</li>
 <li><a href=#photon-mapping>Photon Mapping</a>
 <ul>
 <li><a href=#contextualización-histórica>Contextualización Histórica</a></li>
@@ -369,9 +390,9 @@ Rasterizacion
 <li><a href=#mapas-de-proyección>Mapas de proyección</a></li>
 <li><a href=#trazado-de-fotones>Trazado de fotones</a></li>
 <li><a href=#almacenamiento-de-fotones>Almacenamiento de Fotones</a></li>
-<li><a href=#punto-2>Punto 2</a></li>
 </ul>
 </li>
+<li><a href=#punto-2>Punto 2</a></li>
 <li><a href=#rasterizacion>Rasterizacion</a></li>
 </ul>
 </nav>
