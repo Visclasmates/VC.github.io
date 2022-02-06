@@ -1,6 +1,9 @@
 # Workshop3
+## segun el brillo
+En este programa empezamos haciendo un promedio a los colores y creamos el photomosaico de acuerdo a los colores oscuros es decir a el brillo de cada una de las imagenes comprarada con el pixel individual que tratamos de reemplazar por la imagen.
 
-este programa renderiza segun el brillo.
+{{< p5-iframe sketch="../js/taller3.js" width="300" height="300" >}}
 
-{{< p5-iframe sketch="../js/taller3.js" width="600" height="600" >}}
+## segun colores
 
+{{< p5-iframe sketch="../js/taller32.js" >}}
