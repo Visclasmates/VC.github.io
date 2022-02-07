@@ -4,7 +4,7 @@ En este programa empezamos haciendo un promedio a los colores y creamos el photo
 
 {{< p5-iframe sketch="../js/taller3.js" width="300" height="300" >}}
 
-## segun colores
+## Segun Colores
 
 {{< p5-iframe sketch="../js/taller32.js" >}}
 
