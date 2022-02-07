@@ -14,7 +14,5 @@ Debe clonarse y correrse en local, hubo un error en la creacion de la plantilla 
 Enlace repositorio:
 [Shaders Implementation](https://github.com/Visclasmates/vc/).
 
-Comando para correr en local:
-{{< hugo server -D --disableFastRender >}}
 
 
