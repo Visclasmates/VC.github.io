@@ -12,7 +12,7 @@ En este programa empezamos haciendo un promedio a los colores y creamos el photo
 Debe clonarse y correrse en local, hubo un error en la creacion de la plantilla y por eso creamos otro, que pena la molestia profe
 
 Enlace repositorio:
-{{</* button href="https://github.com/Visclasmates/vc/settings" */>}}Contribute{{</* /button */>}}
+[Shaders Implementation](https://github.com/Visclasmates/vc/settings).
 
 Comando para correr en local:
 {{< hugo server -D --disableFastRender >}}
