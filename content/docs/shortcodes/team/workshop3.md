@@ -7,3 +7,7 @@ En este programa empezamos haciendo un promedio a los colores y creamos el photo
 ## segun colores
 
 {{< p5-iframe sketch="../js/taller32.js" >}}
+
+## Ansii Art
+{{< p5-iframe sketch="../js/ascii_art_hardware.js"width="768" height="393" >}}
+
